@@ -1,0 +1,232 @@
+﻿<ui:UiPage x:Class="Roundtable.Views.Pages.DashboardPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Roundtable.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="DashboardPage"
+    d:DataContext="{d:DesignInstance local:DashboardPage, IsDesignTimeCreatable=False}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    d:Background="{DynamicResource ApplicationBackgroundBrush}"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d">
+
+    <Grid Margin="56,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Margin="0,0,0,50" Grid.Column="0">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <ui:CardExpander >
+                        <Expander.Header>
+                            <BulletDecorator>
+                                <Grid VerticalAlignment="Center" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <ui:FontIcon
+                                    Name="SeamlessCopiedIcon"
+                                    Grid.Column="0"
+                                    Margin="0,0,10,0"
+                                    Glyph="&#xE711;"
+                                    FontFamily="{DynamicResource SegoeFluentIcons}"
+                                    FontSize="24"
+                                    Foreground="Red"/>
+                                    <TextBlock Name="SeamlessHeaderText"  Grid.Column="1" FontSize="18">
+                                    Seamless 1.5.1 not found!
+                                    </TextBlock>
+                                </Grid>
+                            </BulletDecorator>
+                        </Expander.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock 
+                            Grid.Row="0"
+                            Margin="0,0,0,24"
+                            TextWrapping="Wrap"
+                            Foreground="white" 
+                            FontSize="16">
+                            This mod relies on the Seamless Coop mod. You can get Seamless Coop from their NexusMod page or from their GitHub mirror.
+                            </TextBlock>
+                            <Border 
+                                Name="SeamlessPanel" 
+                                Drop="SeamlessPanel_Drop" 
+                                DragEnter="SeamlessPanel_DragEnter"
+                                DragLeave="SeamlessPanel_DragLeave"
+                                AllowDrop="true"
+                                Margin="0,0,0,10"
+                                Background="{DynamicResource ApplicationBackgroundBrush}"
+                                Grid.Row="1"
+                                BorderThickness="1">
+                                <Border.BorderBrush>
+                                    <DrawingBrush Viewport="0,0,12,12" ViewportUnits="Absolute" TileMode="Tile">
+                                        <DrawingBrush.Drawing>
+                                            <DrawingGroup>
+                                                <GeometryDrawing Brush="#dddddd">
+                                                    <GeometryDrawing.Geometry>
+                                                        <GeometryGroup>
+                                                            <RectangleGeometry Rect="0,0,50,50" />
+                                                            <RectangleGeometry Rect="50,50,50,50" />
+                                                        </GeometryGroup>
+                                                    </GeometryDrawing.Geometry>
+                                                </GeometryDrawing>
+                                            </DrawingGroup>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Border.BorderBrush>
+                                <Grid
+                                HorizontalAlignment="Center"
+                                Margin="25,40,25,40">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <ui:FontIcon
+                                        Name="SeamlessDropIcon"
+                                        Margin="0,0,0,10"
+                                        FontSize="48"
+                                        FontFamily="{DynamicResource SegoeFluentIcons}"/>
+                                    <TextBlock 
+                                    Name="DropMessage"
+                                    Grid.Row="1"
+                                    TextAlignment="Center"
+                                    Margin="0,0,0,10"
+                                    TextWrapping="Wrap" 
+                                    Foreground="white" 
+                                    FontSize="18">
+                                    Drop Seamless 1.5.1 zip file here or
+                                    </TextBlock>
+                                    <ui:Button
+                                    Name="BrowseButton"
+                                    Click="Browse_Click"
+                                    Grid.Row="2"
+                                    Foreground="#59ADFF" HorizontalAlignment="Center" >
+                                        Browse
+                                    </ui:Button>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ui:CardExpander>
+                    <ui:CardExpander>
+                        <Expander.Header>
+                            <BulletDecorator>
+                                <Grid VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ui:FontIcon
+                                        Name="DownloadHeaderIcon"
+                                        Grid.Column="0"
+                                        Margin="0,0,10,0"
+                                        Glyph="&#xE896;"
+                                        FontFamily="{DynamicResource SegoeFluentIcons}"
+                                        FontSize="24"/>
+                                    <TextBlock Name="DownloadHeaderText" Grid.Column="1" FontSize="18">
+                                    Download Roundtable Hold Arena
+                                    </TextBlock>
+                                </Grid>
+                            </BulletDecorator>
+                        </Expander.Header>
+                        <StackPanel>
+                            <TextBlock 
+                            Name="DownloadText"
+                            Grid.Row="0"
+                            Margin="0,0,0,24"
+                            TextWrapping="Wrap"
+                            Foreground="white" 
+                            FontSize="16">
+                            This will download the latest Roundtable Hold Arena version from GitHub.
+                            </TextBlock>
+                            <ui:Button Click="Download_Click">
+                                <Grid 
+                                VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ui:FontIcon
+                                        Name="DownloadButtonIcon"
+                                        Grid.Column="0"
+                                        Margin="0,0,10,0"
+                                        FontFamily="{DynamicResource SegoeFluentIcons}"
+                                        FontSize="24"/>
+                                    <TextBlock Name="DownloadButtonText" FontSize="24" Grid.Column="1">Download</TextBlock>
+                                </Grid>
+                            </ui:Button>
+                        </StackPanel>
+                    </ui:CardExpander>
+                    <ui:CardExpander>
+                        <Expander.Header>
+                            <BulletDecorator>
+                                <Grid VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ui:FontIcon
+                                    Grid.Column="0"
+                                    Margin="0,0,10,0"
+                                    Glyph="&#xE8DE;"
+                                    FontFamily="{DynamicResource SegoeFluentIcons}"
+                                    FontSize="24"/>
+                                    <TextBlock  Grid.Column="1" FontSize="18">
+                                    Setup Roundtable Hold Arena
+                                    </TextBlock>
+                                </Grid>
+                            </BulletDecorator>
+                        </Expander.Header>
+                        <StackPanel>
+                            <TextBlock 
+                            Name="SetupText"
+                            Grid.Row="0"
+                            Margin="0,0,0,24"
+                            TextWrapping="Wrap"
+                            Foreground="white" 
+                            FontSize="16">
+                            Pick where you want the mod unpacked and setup.
+                            </TextBlock>
+                            <ui:Button Name="SetupBrowseButton" Click="SetupBrowse_Click">
+                                <Grid 
+                                VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <ui:FontIcon
+                                        Name="SetupBrowseButtonIcon"
+                                        Grid.Column="0"
+                                        Margin="0,0,10,0"
+                                        Glyph="&#xE896;"
+                                        FontFamily="{DynamicResource SegoeFluentIcons}"
+                                        FontSize="24"/>
+                                    <TextBlock Name="SetupBrowseButtonText" FontSize="24" Grid.Column="1">Browse</TextBlock>
+                                </Grid>
+                            </ui:Button>
+                        </StackPanel>
+                    </ui:CardExpander>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+        <ScrollViewer Margin="0,0,0,50" Grid.Column="1">
+            <Border BorderThickness="3" Padding="0,0,0,0" CornerRadius="4,4,4,4" Background="#393939">
+                <TextBox BorderThickness="0" VerticalAlignment="Stretch" Background="Transparent" IsReadOnly="True" Name="Console" FontFamily="Courier New" TextWrapping="Wrap" FontSize="16">
+                    > Emptiness.
+                </TextBox>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</ui:UiPage>
