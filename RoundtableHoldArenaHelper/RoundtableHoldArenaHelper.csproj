@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <ApplicationIcon>Assets\duelistFinger (1).ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\duelistFinger.png" />
+    <None Remove="Assets\icon-256.png" />
+    <None Remove="Assets\lilbro.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\duelistFinger (1).ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\duelistFinger.png" />
+    <EmbeddedResource Include="Assets\lilbro.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gameloop.Vdf" Version="0.6.2" />
+    <PackageReference Include="Gameloop.Vdf.JsonConverter" Version="0.2.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="components\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DirectNCore">
+      <HintPath>..\..\..\..\..\..\ModdingTools\Wice\DirectNCore\bin\Release\net6.0-windows10.0.19041.0\DirectNCore.dll</HintPath>
+    </Reference>
+    <Reference Include="WiceCore">
+      <HintPath>..\..\..\..\..\..\ModdingTools\Wice\WiceCore\bin\Release\net6.0-windows10.0.19041.0\WiceCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
